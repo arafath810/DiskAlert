@@ -83,80 +83,47 @@ The prototype demonstrates a proactive monitoring workflow where storage trends 
 \## 🏗️ Architecture
 
 
+## 🏗️ Architecture
 
 ```text
-
-&#x20;             ┌─────────────────────┐
-
-&#x20;             │     DiskAlert       │
-
-&#x20;             │      Monitor        │
-
-&#x20;             └──────────┬──────────┘
-
-&#x20;                        │
-
-&#x20;             ┌──────────▼──────────┐
-
-&#x20;             │ Storage Monitoring  │
-
-&#x20;             │                     │
-
-&#x20;             │ Disk Usage          │
-
-&#x20;             │ Inode Usage         │
-
-&#x20;             │ Consumption Slope   │
-
-&#x20;             └──────────┬──────────┘
-
-&#x20;                        │
-
-&#x20;             ┌──────────▼──────────┐
-
-&#x20;             │ Prediction Engine   │
-
-&#x20;             │                     │
-
-&#x20;             │ Usage Rate          │
-
-&#x20;             │ Time Until Full     │
-
-&#x20;             └──────────┬──────────┘
-
-&#x20;                        │
-
-&#x20;                   Alert Condition
-
-&#x20;                        │
-
-&#x20;             ┌──────────▼──────────┐
-
-&#x20;             │  Incident Analysis  │
-
-&#x20;             │                     │
-
-&#x20;             │ Top Directories     │
-
-&#x20;             │ Large Log Files     │
-
-&#x20;             │ Inode Saturation    │
-
-&#x20;             └──────────┬──────────┘
-
-&#x20;                        │
-
-&#x20;             ┌──────────▼──────────┐
-
-&#x20;             │   Telegram Bot      │
-
-&#x20;             │                     │
-
-&#x20;             │ 🔍 Scan Again       │
-
-&#x20;             │ 🧹 Safe Cleanup     │
-
-&#x20;             │ 📄 Log Analysis     │
-
-&#x20;             └─────────────────────┘
+┌─────────────────────────────┐
+│         DiskAlert           │
+│          Monitor            │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│     Storage Monitoring      │
+│                             │
+│ • Disk Usage                │
+│ • Inode Usage               │
+│ • Consumption Trends        │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│      Prediction Engine      │
+│                             │
+│ • Consumption Rate          │
+│ • Time Until Full           │
+│ • Exhaustion Alert          │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│     Incident Analysis       │
+│                             │
+│ • Top Disk Consumers        │
+│ • Inode Saturation          │
+│ • Large Log Files           │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│       Telegram Bot          │
+│                             │
+│ 🔍 Scan Again               │
+│ 🧹 Safe Cleanup             │
+│ 📄 Log Analysis             │
+└─────────────────────────────┘
 
